@@ -8,14 +8,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-body.menu-open {
-    max-width: calc(100% - 200px); /* Restrict the width of the body when the menu is open */
-    overflow: hidden; /* Prevent horizontal scrolling */
-    margin-right: 200px; /* Center the content */
-    transition: max-width 0.3s ease, margin-right 0.3s ease; /* Smooth transition */
-}
-
-.header, .menu, .content, .main, .nested-flex-container {
+.header, .content, .main, .nested-flex-container {
     display: flex;
 }
 
@@ -43,73 +36,16 @@ body.menu-open {
     transition: transform 0.3s ease; /* Smooth transition for logo scaling */
 }
 
-.bar {
-    width: 100%;
-    height: 4px;
-    background-color: #333;
-}
-
-.hamburger-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    margin-left: 20px; /* Add more space between the logo and the bars */
-}
-
-.menu {
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    background-color: #fff;
-    border-left: 1px solid #ddd;
-    padding: 10px;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Ensure the menu is above other content */
-    width: 200px; /* Fixed width for the menu */
-    transition: transform 0.3s ease; /* Smooth transition for showing/hiding the menu */
-    transform: translateX(100%); /* Initially hide the menu off-screen */
-}
-
-.menu.show {
-    transform: translateX(0); /* Show the menu */
-}
-
-.menu-item {
-    margin: 10px 0;
-    font-family: Arial, sans-serif; /* Use the same font as the boxes */
-    font-size: 16px; /* Adjust the font size */
-    font-weight: bold; /* Make the font bold */
-}
-
-.menu-item a {
-    color: #333;
-    text-decoration: none;
-}
-
-.menu-item a:hover {
-    text-decoration: underline;
-}
-
 .content {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    transition: margin-right 0.3s ease; /* Smooth transition for content shifting */
-}
-
-.content.shifted {
-    margin-right: 200px; /* Shift content to the left when menu is shown */
+    transition: margin-top 0.3s ease; /* Smooth transition for content shifting */
 }
 
 .exit-button {
     position: absolute;
-    top: 10px;
+    top: 5px;
     right: 10px;
     width: 30px;
     height: 30px;
@@ -124,23 +60,25 @@ body.menu-open {
 
 .main {
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Prevent wrapping */
     justify-content: center;
     width: 100%;
     max-width: 900px;
 }
 
+/* Ensure the flex container does not wrap */
 .nested-flex-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
     gap: 10px; /* Use gap to handle spacing between items */
-    flex-wrap: wrap; /* Ensure items wrap to the next line if necessary */
+    flex-wrap: nowrap; /* Prevent wrapping */
 }
 
+/* Ensure the flex items grow and shrink as needed */
 .box, .widebox {
-    flex: 1;
+    flex: 1 1 auto; /* Allow boxes to grow and shrink as needed */
     margin: 10px;
     display: flex;
     justify-content: center;
@@ -151,7 +89,7 @@ body.menu-open {
     position: relative; /* Ensure the overlay is positioned relative to the box */
     border-radius: 10px; /* Add rounded edges */
     overflow: hidden; /* Ensure the overlay does not overflow the box */
-    min-width: 200px; /* Ensure boxes have a minimum width */
+    min-width: 100px; /* Ensure boxes have a minimum width */
     min-height: 150px; /* Ensure boxes have a minimum height */
 }
 
@@ -160,10 +98,48 @@ body.menu-open {
     height: 150px;
 }
 
+.menu-box {
+    flex: 1 1 auto; /* Allow boxes to grow and shrink as needed */
+    margin: 10px;
+    height: 75px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    min-width: 100px;
+}
+
+.menu-box .overlay {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.menu-box .overlay p {
+    margin: 0;
+    font-size: clamp(11px, 2vw, 16px); /* Flexible font size */
+}
+
 .box1 { background-color: #f6d6ad; }
 .box2 { background-color: #0055BF; }
 .box3 { background-color: #aecbfa; }
-.box4 { background-color: #ccff90; }
+.box4 { background-color: #e09185; }
 .box5 { background-color: #d7aefb; }
 
 .imagebox1 {
@@ -240,9 +216,14 @@ body.menu-open {
     color: #fff;
 }
 
-.overlay, .overlay-full p {
+.overlay p {
     margin: 0;
     font-size: clamp(12px, 2vw, 18px); /* Flexible font size */
+}
+
+.overlay-full p {
+    margin: 0;
+    font-size: clamp(12px, 2vw, 22px); /* Flexible font size */
 }
 
 .overlay-top {
@@ -291,5 +272,21 @@ a.box, a.widebox {
 @media (min-width: 900px) {
     .overlay-auto-full {
         padding: 4%;
+    }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .nested-flex-container {
+        justify-content: space-between; /* Adjust spacing between items */
+        gap: 3px; /* Reduce gap between items */
+    }
+
+    .box, .widebox, .menu-box {
+        margin: 3px; /* Reduce margin between items */
+    }
+
+    .content {
+        transition: margin-top 0.3s ease; /* Smooth transition for content shifting */
     }
 }
