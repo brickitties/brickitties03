@@ -2,13 +2,13 @@
 <html lang='en'>
   <head>
     <meta charset='UTF-8'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>BricKitties</title>
     <link rel='stylesheet' href='styles.css'/>
     <script defer src='script.js'></script>
   </head>
   <body>
-    <div class='content'>
-      <div class='header'>
+    <div class='header'>
         <div class='logo'>
           <a href="index.html">
             <img src="images/logo.png" alt="Logo" class="logo-img">
@@ -19,36 +19,52 @@
           <div class='bar'></div>
           <div class='bar'></div>
         </div>
-        <div class='menu' id='menu'>
-          <div class='menu-item'>
-            <a href="pages/shows.html">My Shows</a>
-          </div>
-          <div class='menu-item'>
-            <a href="pages/about.html">About Me</a>
-          </div>
-          <div class='menu-item'>
-			<a href="pages/moreabout.html">More About Me</a>
-          </div>
-        </div>
+    </div>
+    <div class='menu' id='menu'>
+      <button class="exit-button" id="exit-button">&times;</button>
+      <div class='menu-item'>
+        <a href="pages/shows.html">My Shows</a>
       </div>
+      <div class='menu-item'>
+        <a href="pages/about.html">About Me</a>
+      </div>
+      <div class='menu-item'>
+        <a href="pages/moreabout.html">More About Me</a>
+      </div>
+    </div>
+    <div class='content' id='content'>
       <div class='main'>
-        <div class='box box1'>
-          <p>Welcome to this little corner for my LEGO creations and adventures — curated by me, with a little help from my supurrvisors. 🐾</p>
+        <div class='nested-flex-container'>
+          <a href="https://beta.ideas.lego.com/challenges/5a5e3fbb-ccce-4e65-b419-628ed051e73e/entries/2232fc80-d713-4528-8a0f-d66b71a2f276" class='box imagebox1' target="_blank">
+            <div class='overlay overlay-center'>
+              <p>See my Latest IDEAS Submission</p>
+            </div>
+          </a>
+          <a href="https://rebrickable.com/users/brickitties/" class='box imagebox2' target="_blank">
+            <div class='overlay overlay-top'>
+              <p>Find my Creations on Rebrickable</p>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/brickitties/" class='box imagebox3' target="_blank">
+            <div class='overlay overlay-bottom'>
+              <p>Follow my Adventures on Instagram</p>
+            </div>
+          </a>
         </div>
-        <div class='box imagebox1'>
-          <div class='overlay'>
-            <p>See my Latest IDEAS Submission</p>
+        <div class='nested-flex-container'>
+          <div class='widebox box2'>
+            <div class='overlay-full'>
+              <p>Welcome to my little LEGO corner.
+              <br>
+              <br>
+              Here I will share my LEGO creations and adventures — curated by me and my team of su<em>purr</em>visors. 🐾</p>
+            </div>
           </div>
-        </div>
-        <div class='box imagebox2'>
-          <div class='overlay'>
-            <p>Find my Creations on Rebrickable</p>
-          </div>
-        </div>
-        <div class='box imagebox3'>
-          <div class='overlay'>
-            <p>Follow my Adventures on Instagram</p>
-          </div>
+          <a href="pages/shows.html" class='box imagebox4' target="_blank">
+            <div class='overlay overlay-bottom'>
+              <p>Find my Displays at These Shows</p>
+            </div>
+          </a>
         </div>
       </div>
     </div>
